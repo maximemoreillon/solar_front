@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && rm -r /home/moreillon/node/solar/dist && cp -r ./dist /home/moreillon/node/solar/dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@moreillon/vue_application_template": "0.0.4",
+    "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vue-chartjs": "^3.5.0",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
   },
