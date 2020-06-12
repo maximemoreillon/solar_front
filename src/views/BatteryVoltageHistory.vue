@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    <div v-if="dataCollection.loaded">
+    <h1>Battery voltage</h1>
+
+    <template v-if="dataCollection.loaded">
 
       <LineChart
         v-if="dataCollection.loaded"
         v-bind:data="dataCollection"/>
 
-    </div>
+    </template>
+
   </div>
 </template>
 
@@ -15,7 +18,7 @@
 import LineChart from '@/components/charts/LineChart.vue'
 
 export default {
-  name: 'Home',
+  name: 'BatteryVoltageHistory',
   components: {
     LineChart
   },
@@ -27,10 +30,11 @@ export default {
 
         datasets: [
           {
-            label: 'Current consumption',
+            label: 'Battery voltage',
             data: [], // filled by API call
             borderColor: '#c00000',
-            fill: false,
+            fill: true,
+            backgroundColor: '#c0000055',
             pointRadius: 0,
             pointHitRadius: 3,
             pointHoverRadius: 3,
@@ -42,7 +46,7 @@ export default {
   },
   mounted(){
     this.dataCollection.loaded = false;
-    this.axios.get('https://solar.maximemoreillon.com/data')
+    this.axios.get(`${process.env.VUE_APP_SOLAR_API_URL}/battery_voltage/history`)
     .then(response => {
       // Empty array
         this.dataCollection.labels.splice(0,this.dataCollection.labels.length)
