@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <AppTemplate applicationName="Solar power manager">
-      <template v-slot:navigation>
+    <AppTemplate
+      :options="options">
+      <template v-slot:nav>
         <router-link to="/">Battery voltage</router-link>
         <router-link to="/current">Current</router-link>
       </template>
@@ -17,6 +18,16 @@ export default {
   name: 'App',
   components: {
     AppTemplate,
+  },
+  data(){
+    return {
+      options: {
+        title: 'Solar power dashboard',
+        authenticate: true,
+        login_url: `${process.env.VUE_APP_AUTHENTICATION_API_URL}/login`,
+        identification_url: `${process.env.VUE_APP_AUTHENTICATION_API_URL}/whoami`
+      },
+    }
   },
 }
 </script>
