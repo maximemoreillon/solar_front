@@ -1,4 +1,7 @@
-# solar_front
+# Solar setup monitoring GUI
+
+This application is now deprecated
+
 
 ## Project setup
 ```
